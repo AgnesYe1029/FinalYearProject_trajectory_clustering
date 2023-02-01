@@ -38,11 +38,12 @@ class TrajectoryClustering:
         trajectories_coordinates = []
         for index, traj in enumerate(trajectories):
             coords = np.array([list(utm.from_latlon(ll[0], ll[1])[:2]) for ll in traj])
+            # slicing the returned result to retrieve the latitude and longtitude
             trajectories_coordinates.append(coords)
         return trajectories_coordinates
 
     @classmethod
-    def compute_distance_matrix(cls, trajectories, method = "Frechet"):
+    def compute_distance_matrix(cls, trajectories, method="Frechet"):
 
         traj_len = len(trajectories)
         distance_matrix = np.zeros((traj_len, traj_len))
